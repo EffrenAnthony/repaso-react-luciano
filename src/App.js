@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { CardPersona as Persona } from './components/CardPersona'
 
-function App() {
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false)
+  const [showLogo, setShowLogo] = useState(false)
+  const handleDarkMode = () => {
+    if (darkMode === true) {
+      setDarkMode(false)
+    } else {
+      setDarkMode(true)
+    }
+  }
+  const mostrarLogo = () => {
+    setShowLogo(!showLogo)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {
+        showLogo &&
+        <img src="https://elevatecnologia.com/wp-content/uploads/2020/11/%C2%BFComo-es-beneficioso-ReactJS.jpg" alt="img"
+          style={{width: '200px'}}
+        />
+      }
+      <button className="btn btn-info" onClick={handleDarkMode}>{darkMode ? 'light' : 'dark'}</button>
+      <Persona nombre='Luciano' edad={26} headerClass={darkMode ? 'card-header-dark' : 'card-header'} mostrarLogo={mostrarLogo}/>
     </div>
   );
 }
