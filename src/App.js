@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 import { CardPersona as Persona } from './components/CardPersona'
+import Formulario from './components/Formulario';
+import ListPersonas from './components/ListPersonas';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false)
@@ -25,6 +27,8 @@ const App = () => {
       }
       <button className="btn btn-info" onClick={handleDarkMode}>{darkMode ? 'light' : 'dark'}</button>
       <Persona nombre='Luciano' edad={26} headerClass={darkMode ? 'card-header-dark' : 'card-header'} mostrarLogo={mostrarLogo}/>
+      <ListPersonas />
+      <Formulario />
     </div>
   );
 }
